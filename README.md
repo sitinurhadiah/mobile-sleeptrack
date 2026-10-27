@@ -1,29 +1,31 @@
-SleepTrack
+# SleepTrack
 
-Aplikasi Pencatatan Kebiasaan Tidur Sehat
+### Aplikasi Pencatatan Kebiasaan Tidur Sehat
 
-Informasi Proyek
+---
 
-Mata Kuliah: Pemrograman Bergerak
+## Informasi Proyek
 
-Kode Modul: HT-04
+- **Mata Kuliah:** Pemrograman Bergerak
+- **Kode Modul:** HT-04
+- **Kelompok:** 4
+- **Anggota Kelompok:**
+  - Siti Nur Hadiah — `322410015`
+  - Xander Covelin — `322410017`
+- **Teknologi:** Kotlin, Jetpack Compose, Material 3
 
-Kelompok: 4 (Siti Nur Hadiah - 322410015, Xander Covelin - 322410017)
+---
 
-Teknologi: Kotlin, Jetpack Compose, Material 3
+## Deskripsi
 
-Deskripsi
+**SleepTrack** merupakan prototipe aplikasi Android untuk mencatat kebiasaan tidur sehari-hari. Pencatatan meliputi tanggal tidur, waktu mulai tidur, waktu bangun, kualitas tidur berdasarkan penilaian subjektif pengguna, penggunaan gawai sebelum tidur, serta catatan tambahan.
 
-SleepTrack merupakan prototipe aplikasi Android untuk mencatat kebiasaan tidur, meliputi tanggal, waktu mulai tidur, waktu bangun, kualitas tidur subjektif, penggunaan gawai, dan catatan tambahan.
+## Tujuan
 
-Tujuan
+Membantu pengguna melakukan pencatatan dan refleksi sederhana terhadap kebiasaan tidur agar pengguna dapat mengenali pola tidurnya berdasarkan catatan yang tersimpan.
 
-Membantu pengguna melakukan pencatatan dan refleksi sederhana terhadap kebiasaan tidur.
+## Batasan
 
-Batasan
-
-Menggunakan data simulasi.
-
-Data UTS disimpan sementara selama aplikasi berjalan.
-
-Aplikasi bersifat edukatif dan bukan alat diagnosis gangguan tidur.
+- Aplikasi menggunakan data simulasi.
+- Data UTS disimpan sementara selama aplikasi berjalan dan tidak menggunakan database.
+- Aplikasi bersifat edukatif dan **bukan alat untuk mendiagnosis gangguan tidur**.
