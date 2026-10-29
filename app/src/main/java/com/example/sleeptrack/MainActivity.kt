@@ -143,30 +143,7 @@ fun SleepTrackHome(modifier: Modifier = Modifier) {
 
         SectionTitle("Riwayat Tidur")
 
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            ),
-            shape = RoundedCornerShape(16.dp)
-        ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(20.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
-            ) {
-                Text(
-                    text = "Belum ada catatan tidur",
-                    fontWeight = FontWeight.SemiBold
-                )
-                Text(
-                    text = "Catatan yang kamu simpan akan muncul di sini.",
-                    color = Color.Gray,
-                    fontSize = 14.sp
-                )
-            }
-        }
+        SleepRecordHistory(records = records)
 
         Card(
             modifier = Modifier.fillMaxWidth(),
