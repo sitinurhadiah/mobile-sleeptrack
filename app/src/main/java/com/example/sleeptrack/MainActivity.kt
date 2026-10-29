@@ -64,6 +64,12 @@ fun SleepTrackHome(modifier: Modifier = Modifier) {
     var savedMessage by remember {
         mutableStateOf("")
     }
+
+    val summary = calculateSleepSummary(records)
+
+    val averageHours = summary.averageDurationMinutes / 60
+    val averageMinutes = summary.averageDurationMinutes % 60
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -94,12 +100,13 @@ fun SleepTrackHome(modifier: Modifier = Modifier) {
         ) {
             SummaryCard(
                 title = "Total Catatan",
-                value = "0",
+                value = summary.totalRecords.toString(),
                 modifier = Modifier.weight(1f)
             )
+
             SummaryCard(
                 title = "Rata-rata Tidur",
-                value = "0j 0m",
+                value = "${averageHours}j ${averageMinutes}m",
                 modifier = Modifier.weight(1f)
             )
         }
@@ -117,7 +124,11 @@ fun SleepTrackHome(modifier: Modifier = Modifier) {
                     fontWeight = FontWeight.SemiBold
                 )
                 Spacer(Modifier.height(8.dp))
-                Text("Baik: 0  •  Cukup: 0  •  Buruk: 0")
+                Text(
+                    text = "Baik: ${summary.goodQualityCount}  •  " +
+                            "Cukup: ${summary.fairQualityCount}  •  " +
+                            "Buruk: ${summary.poorQualityCount}"
+                )
             }
         }
 
@@ -160,8 +171,10 @@ fun SleepTrackHome(modifier: Modifier = Modifier) {
                 )
                 Spacer(Modifier.height(6.dp))
                 Text(
-                    text = "Usahakan jadwal tidur teratur dan kurangi " +
-                            "penggunaan ponsel menjelang waktu tidur."
+                    text = "Usahakan tidur dan bangun pada waktu yang teratur. " +
+                            "Kurangi penggunaan ponsel menjelang tidur dan ciptakan " +
+                            "lingkungan tidur yang nyaman. Catatan ini membantu " +
+                            "mengenali kebiasaan tidur, bukan mendiagnosis gangguan tidur."
                 )
             }
         }
