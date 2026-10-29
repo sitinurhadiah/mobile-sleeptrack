@@ -75,15 +75,15 @@ Wireframe rancangan aplikasi tersedia di `docs/wireframe.png`.
 
 ### 9.1 Tampilan Awal
 
-![Tampilan awal SleepTrack](docs/screenshots/01-tampilan-awal.png)
+![Tampilan awal SleepTrack](docs/screenshots/01-tampilan-awal.jpeg)
 
 ### 9.2 Form Pencatatan Tidur
 
-![Form pencatatan tidur SleepTrack](docs/screenshots/02-form-pencatatan.png)
+![Form pencatatan tidur SleepTrack](docs/screenshots/02-form-pencatatan.jpeg)
 
 ### 9.3 Riwayat dan Ringkasan
 
-![Riwayat dan ringkasan SleepTrack](docs/screenshots/03-riwayat-ringkasan.png)
+![Riwayat dan ringkasan SleepTrack](docs/screenshots/03-riwayat-ringkasan.jpeg)
 
 ## 10. Pengujian Aplikasi
 
