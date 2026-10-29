@@ -16,13 +16,15 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -55,6 +57,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun SleepTrackHome(modifier: Modifier = Modifier) {
+    var records by remember {
+        mutableStateOf<List<SleepRecord>>(emptyList())
+    }
+
+    var savedMessage by remember {
+        mutableStateOf("")
+    }
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -112,71 +121,25 @@ fun SleepTrackHome(modifier: Modifier = Modifier) {
             }
         }
 
+
         SectionTitle("Catat Tidurmu")
 
-        Card(
-            modifier = Modifier.fillMaxWidth(),
-            colors = CardDefaults.cardColors(
-                containerColor = Color.White
-            ),
-            shape = RoundedCornerShape(16.dp)
-        ) {
-            Column(
-                modifier = Modifier.padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
-            ) {
-                Text(
-                    text = "Isi informasi tidurmu",
-                    fontWeight = FontWeight.SemiBold,
-                    fontSize = 17.sp
-                )
-
-                FormPlaceholder("Tanggal", "Pilih tanggal")
-                Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
-                    FormPlaceholder(
-                        "Mulai tidur",
-                        "22:00",
-                        Modifier.weight(1f)
-                    )
-                    FormPlaceholder(
-                        "Waktu bangun",
-                        "06:00",
-                        Modifier.weight(1f)
-                    )
-                }
-
-                Text(
-                    text = "Kualitas tidur",
-                    fontWeight = FontWeight.Medium
-                )
-                Text("Buruk  •  Cukup  •  Baik")
-
-                Text(
-                    text = "Menggunakan HP sebelum tidur?",
-                    fontWeight = FontWeight.Medium
-                )
-                Text("Ya / Tidak")
-
-                FormPlaceholder(
-                    "Catatan tambahan",
-                    "Ceritakan bagaimana tidurmu..."
-                )
-
-                Button(
-                    onClick = {},
-                    enabled = false,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    Text("Simpan Catatan")
-                }
-
-                Text(
-                    text = "Form akan diaktifkan pada tahap integrasi.",
-                    fontSize = 12.sp,
-                    color = Color.Gray
-                )
+        SleepRecordForm(
+            onSave = { record ->
+                records = records + record
+                savedMessage =
+                    "Catatan berhasil disimpan. Total catatan sementara: ${records.size}"
             }
+        )
+
+        if (savedMessage.isNotBlank()) {
+            Text(
+                text = savedMessage,
+                color = Color(0xFF287D46),
+                fontWeight = FontWeight.Medium
+            )
         }
+
 
         SectionTitle("Riwayat Tidur")
 
@@ -274,40 +237,6 @@ private fun SummaryCard(
                 fontSize = 23.sp,
                 fontWeight = FontWeight.Bold,
                 color = AccentColor
-            )
-        }
-    }
-}
-
-@Composable
-private fun FormPlaceholder(
-    label: String,
-    placeholder: String,
-    modifier: Modifier = Modifier
-) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(5.dp)
-    ) {
-        Text(
-            text = label,
-            fontWeight = FontWeight.Medium,
-            fontSize = 14.sp
-        )
-        Surface(
-            modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(10.dp),
-            color = Color(0xFFF5F6FA),
-            border = androidx.compose.foundation.BorderStroke(
-                1.dp,
-                Color(0xFFE0E3EC)
-            )
-        ) {
-            Text(
-                text = placeholder,
-                modifier = Modifier.padding(12.dp),
-                color = Color.Gray,
-                fontSize = 14.sp
             )
         }
     }
